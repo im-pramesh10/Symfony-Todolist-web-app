@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home-Todo List Appication @{{ app.user.userIdentifier }}
+{% endblock %}
+
+{% block body %}
+
+	<!-- Modal -->
+	<div class="modal fade" id="itemAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Add todo item</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				{{ form_start(form, {'attr': {'id': 'AddToDo'}}) }}
+				<div class="modal-body">
+					{{ form_row(form.description) }}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<!--<button type="button" class="btn btn-success">Save</button>-->
+					{{ form_row(form.Add) }}
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+
+	<!--Top Bar -->
+	<div class="d-flex flex-row bg-dark mb-3 border">
+		<div class="p-2 flex-grow-1 text-white">Welcome To Todo App</div>
+		{% if app.user %}
+			<div class="p-2 text-white">@{{ app.user.userIdentifier }}</div>
+			<a href="{{ path('app_logout') }}" class="p-2 text-danger">logout</a>
+		{% endif %}
+	</div>
+
+	<!--Button to add New ToDo items. Handled from jquery to popup a modal-->
+	<button type="button" class="btn btn-success float-endf" data-bs-toggle="modal" data-bs-target="#itemAddModal">
+		Add New Todo
+	</button>
+
+
+	<!--Show the available ToDo list item related to the user jquery with ajax call will handle this-->
+
+
+{% endblock %}
