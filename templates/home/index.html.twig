@@ -13,7 +13,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">Add todo item</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				{{ form_start(form, {'attr': {'id': 'AddToDo'}}) }}
+				{{ form_start(form, {'attr': {'id': 'addTodo'}}) }}
 				<div class="modal-body">
 					{{ form_row(form.description) }}
 				</div>
@@ -44,6 +44,5 @@
 
 
 	<!--Show the available ToDo list item related to the user jquery with ajax call will handle this-->
-
-
+	<div id="showitems"></div>
 {% endblock %}
