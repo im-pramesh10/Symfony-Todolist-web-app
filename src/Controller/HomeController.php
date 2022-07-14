@@ -87,6 +87,11 @@ class HomeController extends AbstractController
                 'status' => 'ok',
                 'message' => 'marked completed successfully'
             ], 200);
+        } else {
+            return new JsonResponse([
+                'status' => 'Error',
+                'message' => 'Error'
+            ], 500);
         }
     }
 }
