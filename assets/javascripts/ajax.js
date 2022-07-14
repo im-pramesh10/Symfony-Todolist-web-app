@@ -11,6 +11,10 @@ function ajaxGetFunction(){
               //  alert(this.value); // or alert($(this).attr('id'));
               ajaxMarkfunction(this.value);
             });
+            $(".unmark").click(function() {
+                //  alert(this.value); // or alert($(this).attr('id'));
+                ajaxUnmarkfunction(this.value);
+              });
             $(".delete").click(function() {
               //  alert(this.value); // or alert($(this).attr('id'));
               ajaxDelfunction(this.value);
@@ -42,6 +46,22 @@ function ajaxMarkfunction(x)
         $.ajax({
             type: "GET",
             url: "/ajaxcontrol/ajax"+"?mark="+id,
+            success: function (response) {
+                //console.log(response);
+                ajaxGetFunction();
+
+    
+            }
+        });
+}
+//ajaxfunction to unmark an item complete
+function ajaxUnmarkfunction(x)
+{
+    let id =x;
+  
+        $.ajax({
+            type: "GET",
+            url: "/ajaxcontrol/ajax"+"?unmark="+id,
             success: function (response) {
                 //console.log(response);
                 ajaxGetFunction();

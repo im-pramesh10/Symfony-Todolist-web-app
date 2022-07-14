@@ -87,6 +87,17 @@ class HomeController extends AbstractController
                 'status' => 'ok',
                 'message' => 'marked completed successfully'
             ], 200);
+        } else if ($request->get("unmark")) {
+            $id = $request->get("unmark");
+            $todoitem = $this->em->getRepository(Todoitems::class)->find($id);
+            //dd($todoitem);
+            $todoitem->setIsCompleted(false);
+            $this->em->persist($todoitem);
+            $this->em->flush();
+            return new JsonResponse([
+                'status' => 'ok',
+                'message' => 'unmarked completed successfully'
+            ], 200);
         } else {
             return new JsonResponse([
                 'status' => 'Error',

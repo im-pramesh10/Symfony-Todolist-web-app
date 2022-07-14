@@ -1,13 +1,21 @@
-<div class="container">
+<div class="container m-1 bg-dark">
 	{% for item in items %}
 
 
 		<div class="d-flex flex-row">
 			{% if item.IsCompleted == false %}
-				<div class="p-2 flex-grow-1">{{ item.getDescription }}</div>
+				<div class="p-2 flex-grow-1 text-white">{{ item.getDescription }}</div>
 
 				<button type="button" class="mark btn btn-sm btn-warning m-1" value="{{ item.getId }}">Mark Complete</button>
-				<button type="button" class="delete btn btn-danger btn-sm m-1" value="{{ item.getId }}">
+				<button type="button" class="delete btn btn-danger btn-sm m-1 text-white" value="{{ item.getId }}">
+					<i class="material-icons">delete</i>
+				</button>
+			{% endif %}
+			{% if item.IsCompleted == true %}
+				<div class="p-2 flex-grow-1 text-white">{{ item.getDescription }}</div>
+
+				<button type="button" class="unmark btn btn-sm btn-warning m-1" value="{{ item.getId }}">Completed</button>
+				<button type="button" class="delete btn btn-danger btn-sm m-1 text-white" value="{{ item.getId }}">
 					<i class="material-icons">delete</i>
 				</button>
 			{% endif %}
